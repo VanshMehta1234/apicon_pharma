@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Colors */
+    --color-background: #FEFEFE; /* Clinical white */
+    --color-foreground: #373435; /* Deep charcoal */
+    --color-border: #E5E7EB; /* Light gray */
+    --color-input: #FFFFFF; /* White */
+    --color-ring: #0079C0; /* Scientific blue */
+    
+    /* Card Colors */
+    --color-card: #FFFFFF; /* White */
+    --color-card-foreground: #373435; /* Deep charcoal */
+    --color-popover: #FFFFFF; /* White */
+    --color-popover-foreground: #373435; /* Deep charcoal */
+    
+    /* Muted Colors */
+    --color-muted: #F8F9FA; /* Subtle gray */
+    --color-muted-foreground: #6C6C6E; /* Professional gray */
+    
+    /* Primary Colors */
+    --color-primary: #0079C0; /* Scientific blue */
+    --color-primary-foreground: #FFFFFF; /* White */
+    
+    /* Secondary Colors */
+    --color-secondary: #6C6C6E; /* Professional gray */
+    --color-secondary-foreground: #FFFFFF; /* White */
+    
+    /* Destructive Colors */
+    --color-destructive: #DC3545; /* Error red */
+    --color-destructive-foreground: #FFFFFF; /* White */
+    
+    /* Accent Colors */
+    --color-accent: #F8F9FA; /* Subtle gray */
+    --color-accent-foreground: #373435; /* Deep charcoal */
+    
+    /* Success Colors */
+    --color-success: #00A651; /* Success green */
+    --color-success-foreground: #FFFFFF; /* White */
+    
+    /* Warning Colors */
+    --color-warning: #FF8C00; /* Warning orange */
+    --color-warning-foreground: #FFFFFF; /* White */
+    
+    /* Error Colors */
+    --color-error: #DC3545; /* Error red */
+    --color-error-foreground: #FFFFFF; /* White */
+    
+    /* Text Colors */
+    --color-text-primary: #373435; /* Deep charcoal */
+    --color-text-secondary: #6C6C6E; /* Professional gray */
+    
+    /* Surface Colors */
+    --color-surface: #F8F9FA; /* Subtle gray */
+    
+    /* Conversion Colors */
+    --color-conversion: #FF6B35; /* Energetic orange */
+    --color-conversion-foreground: #FFFFFF; /* White */
+    
+    /* Trust Colors */
+    --color-trust: #00A651; /* Medical green */
+    --color-trust-foreground: #FFFFFF; /* White */
+    
+    /* Brand Colors */
+    --color-brand-primary: #0079C0; /* Scientific blue */
+    --color-brand-secondary: #6C6C6E; /* Professional gray */
+    --color-brand-accent: #FF6B35; /* Energetic orange */
+    
+    /* Spacing */
+    --spacing-base: 8px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+    --spacing-4xl: 96px;
+    
+    /* Border Radius */
+    --radius-sm: 2px;
+    --radius: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 16px 64px rgba(0, 0, 0, 0.15);
+    
+    /* Animation */
+    --animation-duration: 300ms;
+    --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 32;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  }
+}
+
+@layer components {
+  .molecular-animation {
+    animation: molecularRotate 20s linear infinite;
+  }
+  
+  @keyframes molecularRotate {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+  
+  .pulse-indicator {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .glow-effect {
+    box-shadow: 0 0 20px rgba(0, 121, 192, 0.3);
+  }
+  
+  .card-hover {
+    transition: all var(--animation-duration) var(--animation-timing);
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .btn-conversion {
+    background: var(--color-conversion);
+    color: var(--color-conversion-foreground);
+    transition: all var(--animation-duration) var(--animation-timing);
+  }
+  
+  .btn-conversion:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-conversion));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .molecular-structure {
+    background: radial-gradient(circle at 30% 70%, rgba(0, 121, 192, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
+  }
+  
+  .scientific-grid {
+    background-image: 
+      linear-gradient(rgba(0, 121, 192, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 121, 192, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .animate-counter {
+    animation: countUp 2.5s ease-out forwards;
+  }
+  
+  @keyframes countUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
