@@ -39,16 +39,16 @@
     --color-accent: #F8F9FA; /* Subtle gray */
     --color-accent-foreground: #373435; /* Deep charcoal */
     
-    /* Success Colors */
-    --color-success: #00A651; /* Success green */
+    /* Success Colors - Using brand blue */
+    --color-success: #0079C0; /* Brand blue */
     --color-success-foreground: #FFFFFF; /* White */
     
-    /* Warning Colors */
-    --color-warning: #FF8C00; /* Warning orange */
+    /* Warning Colors - Using brand grey */
+    --color-warning: #6C6C6E; /* Brand grey */
     --color-warning-foreground: #FFFFFF; /* White */
     
-    /* Error Colors */
-    --color-error: #DC3545; /* Error red */
+    /* Error Colors - Using darker brand grey */
+    --color-error: #373435; /* Dark brand grey */
     --color-error-foreground: #FFFFFF; /* White */
     
     /* Text Colors */
@@ -58,18 +58,18 @@
     /* Surface Colors */
     --color-surface: #F8F9FA; /* Subtle gray */
     
-    /* Conversion Colors */
-    --color-conversion: #FF6B35; /* Energetic orange */
+    /* Conversion Colors - Using brand blue */
+    --color-conversion: #0079C0; /* Brand blue */
     --color-conversion-foreground: #FFFFFF; /* White */
     
-    /* Trust Colors */
-    --color-trust: #00A651; /* Medical green */
+    /* Trust Colors - Using brand grey */
+    --color-trust: #6C6C6E; /* Brand grey */
     --color-trust-foreground: #FFFFFF; /* White */
     
     /* Brand Colors */
-    --color-brand-primary: #0079C0; /* Scientific blue */
-    --color-brand-secondary: #6C6C6E; /* Professional gray */
-    --color-brand-accent: #FF6B35; /* Energetic orange */
+    --color-brand-primary: #0079C0; /* Brand blue */
+    --color-brand-secondary: #6C6C6E; /* Brand grey */
+    --color-brand-accent: #0079C0; /* Brand blue */
     
     /* Spacing */
     --spacing-base: 8px;
@@ -190,7 +190,7 @@
   
   .btn-conversion:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 121, 192, 0.3);
   }
   
   .text-gradient {
@@ -202,7 +202,7 @@
   
   .molecular-structure {
     background: radial-gradient(circle at 30% 70%, rgba(0, 121, 192, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 70% 30%, rgba(108, 108, 110, 0.1) 0%, transparent 50%);
   }
   
   .scientific-grid {
@@ -216,6 +216,29 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  
+  /* Reveal-on-scroll helpers */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 600ms var(--animation-timing), transform 600ms var(--animation-timing);
+  }
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Unified input styling with visible text and autofill fixes */
+  .form-input {
+    @apply w-full px-4 py-3 border rounded-lg bg-white text-foreground placeholder:text-transparent focus:ring-2 focus:ring-[#1976D2] focus:border-transparent outline-none transition-all duration-200 border-[#E5E7EB];
+  }
+  input.form-input:-webkit-autofill,
+  textarea.form-input:-webkit-autofill,
+  select.form-input:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-foreground);
+    box-shadow: 0 0 0px 1000px #ffffff inset;
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
   }
   
   .scrollbar-hide {

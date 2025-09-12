@@ -17,6 +17,9 @@ export default {
       },
     },
     extend: {
+      screens: {
+        'xs': '475px',
+      },
       colors: {
         border: "var(--color-border)", // light-gray
         input: "var(--color-input)", // white
@@ -126,9 +129,9 @@ export default {
         'md': 'var(--shadow-md)', // elevated
         'lg': 'var(--shadow-lg)', // modal
         'xl': 'var(--shadow-xl)', // overlay
-        'glow': '0 0 20px rgba(0, 121, 192, 0.3)', // brand-glow
-        'glow-conversion': '0 0 20px rgba(255, 107, 53, 0.3)', // conversion-glow
-        'glow-success': '0 0 20px rgba(0, 166, 81, 0.3)', // success-glow
+        'glow': '0 0 20px rgba(0, 121, 192, 0.3)', // brand-blue-glow
+        'glow-conversion': '0 0 20px rgba(0, 121, 192, 0.3)', // brand-blue-glow
+        'glow-success': '0 0 20px rgba(0, 121, 192, 0.3)', // brand-blue-glow
       },
       animation: {
         'molecular-rotate': 'molecularRotate 20s linear infinite',
@@ -167,7 +170,7 @@ export default {
         'scientific': '300ms',
       },
       backgroundImage: {
-        'molecular-gradient': 'radial-gradient(circle at 30% 70%, rgba(0, 121, 192, 0.1) 0%, transparent 50%), radial-gradient(circle at 70% 30%, rgba(255, 107, 53, 0.1) 0%, transparent 50%)',
+        'molecular-gradient': 'radial-gradient(circle at 30% 70%, rgba(0, 121, 192, 0.1) 0%, transparent 50%), radial-gradient(circle at 70% 30%, rgba(108, 108, 110, 0.1) 0%, transparent 50%)',
         'scientific-grid': 'linear-gradient(rgba(0, 121, 192, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 121, 192, 0.1) 1px, transparent 1px)',
         'text-gradient': 'linear-gradient(135deg, var(--color-primary), var(--color-conversion))',
       },

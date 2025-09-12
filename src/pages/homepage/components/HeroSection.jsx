@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
-import Button from '../../../components/ui/Button';
 
 const HeroSection = () => {
   const [currentMetric, setCurrentMetric] = useState(0);
@@ -21,17 +19,17 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-muted/30 to-background overflow-hidden">
+    <section className="relative min-h-[72vh] lg:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-muted/30 to-background overflow-hidden pt-20 pb-12 sm:pt-24 sm:pb-16">
       {/* Molecular Background Animation */}
-      <div className="absolute inset-0 molecular-structure">
-        <div className="absolute top-20 left-20 w-32 h-32 border border-primary/20 rounded-full molecular-animation"></div>
-        <div className="absolute top-40 right-32 w-24 h-24 border border-conversion/20 rounded-full molecular-animation" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-32 left-1/3 w-20 h-20 border border-trust/20 rounded-full molecular-animation" style={{ animationDelay: '4s' }}></div>
-        <div className="absolute bottom-20 right-20 w-28 h-28 border border-primary/20 rounded-full molecular-animation" style={{ animationDelay: '6s' }}></div>
+      <div className="absolute inset-0 molecular-structure pointer-events-none">
+        <div className="hidden sm:block absolute top-12 left-6 w-24 h-24 border border-primary/20 rounded-full molecular-animation"></div>
+        <div className="hidden md:block absolute top-40 right-12 w-20 h-20 border border-conversion/20 rounded-full molecular-animation" style={{ animationDelay: '2s' }}></div>
+        <div className="hidden md:block absolute bottom-24 left-1/4 w-16 h-16 border border-trust/20 rounded-full molecular-animation" style={{ animationDelay: '4s' }}></div>
+        <div className="hidden lg:block absolute bottom-20 right-24 w-24 h-24 border border-primary/20 rounded-full molecular-animation" style={{ animationDelay: '6s' }}></div>
       </div>
-      <div className="container mx-auto px-6 lg:px-8 relative z-10">
+      <div className="w-full px-5 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
             {/* Content Section */}
             <div className="text-center lg:text-left fade-in-up">
               <div className="mb-6">
@@ -41,59 +39,62 @@ const HeroSection = () => {
                 </span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Precision Molecules for{' '}
-                <span className="text-gradient">Life-Saving</span>{' '}
-                Treatments
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight">
+                <span className="text-gradient">Precision Molecules</span> for Life-Saving Treatments
               </h1>
               
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed sm:leading-8 text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
                 Leading global supplier of oncology APIs, bridging cutting-edge chemistry with compassionate care. Every molecule matters in the fight against cancer.
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-                <Link to="/products-api-catalog">
-                  <Button 
-                    variant="default" 
-                    size="lg"
-                    iconName="Package"
-                    iconPosition="left"
-                    className="btn-conversion w-full sm:w-auto"
-                  >
-                    Explore Our API Portfolio
-                  </Button>
-                </Link>
-                <Link to="/partnership-contact">
-                  <Button 
-                    variant="outline" 
-                    size="lg"
-                    iconName="Handshake"
-                    iconPosition="left"
-                    className="w-full sm:w-auto"
-                  >
-                    Request Partnership Consultation
-                  </Button>
-                </Link>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-6 sm:mb-8">
+                <button 
+                  onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="inline-flex items-center justify-center px-6 py-3 bg-conversion hover:bg-conversion/90 text-conversion-foreground rounded-lg font-semibold shadow-sm hover:shadow-md transition-all duration-300 w-full sm:w-auto text-sm"
+                >
+                  <Icon name="Package" size={16} className="mr-2" />
+                  Explore Our API Portfolio
+                </button>
+                <button 
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="inline-flex items-center justify-center px-6 py-3 border border-border hover:bg-accent text-foreground rounded-lg font-semibold shadow-sm hover:shadow-md transition-all duration-300 w-full sm:w-auto text-sm"
+                >
+                  <Icon name="Handshake" size={16} className="mr-2" />
+                  Request Partnership Consultation
+                </button>
+              </div>
+
+              {/* Trust badges */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-8">
+                <span className="inline-flex items-center text-xs sm:text-sm text-muted-foreground bg-white/60 border border-border rounded-full px-3 py-1">
+                  <Icon name="Shield" size={14} className="text-primary mr-2" /> cGMP Certified
+                </span>
+                <span className="inline-flex items-center text-xs sm:text-sm text-muted-foreground bg-white/60 border border-border rounded-full px-3 py-1">
+                  <Icon name="Award" size={14} className="text-primary mr-2" /> FDA/EMA Ready
+                </span>
+                <span className="inline-flex items-center text-xs sm:text-sm text-muted-foreground bg-white/60 border border-border rounded-full px-3 py-1">
+                  <Icon name="Globe" size={14} className="text-primary mr-2" /> Global Supply
+                </span>
               </div>
 
               {/* Real-time Impact Counter */}
-              <div className="bg-card/80 backdrop-blur-sm border border-border rounded-xl p-6 shadow-lg">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <Icon name={metrics?.[currentMetric]?.icon} size={24} className="text-primary" />
+              <div className="bg-card/80 backdrop-blur-sm border border-border rounded-xl p-4 sm:p-6 shadow-lg">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center space-x-3 sm:space-x-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <Icon name={metrics?.[currentMetric]?.icon} size={22} className="text-primary" />
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-foreground animate-counter">
+                      <div className="text-xl sm:text-2xl font-bold text-foreground animate-counter">
                         {metrics?.[currentMetric]?.value}
                       </div>
-                      <div className="text-sm text-muted-foreground">
+                      <div className="text-xs sm:text-sm text-muted-foreground">
                         {metrics?.[currentMetric]?.label}
                       </div>
                     </div>
                   </div>
-                  <div className="flex space-x-1">
+                  <div className="hidden sm:flex space-x-1">
                     {metrics?.map((_, index) => (
                       <div
                         key={index}
@@ -107,35 +108,37 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Molecular Visualization */}
-            <div className="relative">
-              <div className="relative w-full max-w-lg mx-auto">
-                {/* Central Molecule */}
-                <div className="relative w-80 h-80 mx-auto">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-conversion/20 rounded-full blur-3xl"></div>
-                  <div className="relative w-full h-full border-2 border-primary/30 rounded-full molecular-animation flex items-center justify-center">
-                    <div className="w-32 h-32 bg-primary/10 rounded-full flex items-center justify-center">
-                      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" className="text-primary">
-                        <circle cx="32" cy="16" r="4" fill="currentColor" />
-                        <circle cx="16" cy="32" r="4" fill="currentColor" />
-                        <circle cx="48" cy="32" r="4" fill="currentColor" />
-                        <circle cx="32" cy="48" r="4" fill="currentColor" />
-                        <circle cx="32" cy="32" r="6" fill="currentColor" />
-                        <path d="M32 20v8m-12-4h8m8 0h8m-12 8v8" stroke="currentColor" strokeWidth="2" />
-                      </svg>
+            {/* Lab Image */}
+            <div className="relative mt-6 lg:mt-0">
+              <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg mx-auto">
+                <div className="relative bg-card rounded-2xl p-4 sm:p-6 shadow-lg border border-border">
+                  <img
+                    src="/assets/images/lab-image.avif"
+                    alt="Modern pharmaceutical laboratory with precision equipment"
+                    className="w-full h-52 sm:h-64 md:h-72 lg:h-80 object-cover rounded-xl"
+                  />
+                  
+                  {/* Floating Quality Badge */}
+                  <div className="hidden sm:block absolute -top-4 -left-4 bg-primary text-primary-foreground p-3 sm:p-4 rounded-lg shadow-lg">
+                    <div className="flex items-center space-x-2">
+                      <Icon name="Shield" size={18} />
+                      <div>
+                        <div className="text-xs sm:text-sm font-medium">99.8%</div>
+                        <div className="text-[10px] sm:text-xs opacity-80">Quality Rate</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Orbiting Elements */}
-                <div className="absolute top-8 right-8 w-16 h-16 bg-conversion/10 rounded-full flex items-center justify-center molecular-animation" style={{ animationDelay: '1s' }}>
-                  <Icon name="Atom" size={24} className="text-conversion" />
-                </div>
-                <div className="absolute bottom-8 left-8 w-16 h-16 bg-trust/10 rounded-full flex items-center justify-center molecular-animation" style={{ animationDelay: '3s' }}>
-                  <Icon name="Zap" size={24} className="text-trust" />
-                </div>
-                <div className="absolute top-1/2 -right-8 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center molecular-animation" style={{ animationDelay: '5s' }}>
-                  <Icon name="Activity" size={20} className="text-primary" />
+                  
+                  {/* Floating Innovation Badge */}
+                  <div className="hidden sm:block absolute -bottom-4 -right-4 bg-conversion text-conversion-foreground p-3 sm:p-4 rounded-lg shadow-lg">
+                    <div className="flex items-center space-x-2">
+                      <Icon name="Zap" size={18} />
+                      <div>
+                        <div className="text-xs sm:text-sm font-medium">Innovation</div>
+                        <div className="text-[10px] sm:text-xs opacity-80">R&D Excellence</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

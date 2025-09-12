@@ -66,69 +66,71 @@ const FeatureGrid = () => {
   };
 
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Why Pharmaceutical Leaders Choose Apicon
+          <div className="text-center mb-16 lg:mb-20">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 lg:mb-6">
+              <Icon name="Award" size={16} className="mr-2" />
+              Excellence in Action
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 lg:mb-6">
+              Why Pharmaceutical Leaders <span className="text-gradient">Choose Apicon</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg lg:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4">
               Three pillars of excellence that make us the trusted partner for oncology API development and manufacturing worldwide.
             </p>
           </div>
 
           {/* Feature Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {features?.map((feature, index) => {
               const colors = getColorClasses(feature?.color);
               return (
                 <div
                   key={feature?.id}
-                  className={`group relative bg-gradient-to-br ${colors?.gradient} border ${colors?.border} rounded-2xl p-8 card-hover transition-all duration-500`}
+                  className="group relative bg-card border border-border rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 lg:hover:-translate-y-2"
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  {/* Icon */}
-                  <div className={`w-16 h-16 ${colors?.bg} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon name={feature?.icon} size={32} className={colors?.text} />
+                  {/* Icon Container */}
+                  <div className={`w-16 h-16 lg:w-20 lg:h-20 ${colors?.bg} rounded-2xl flex items-center justify-center mb-6 lg:mb-8 group-hover:scale-110 transition-transform duration-300 shadow-md`}>
+                    <Icon name={feature?.icon} size={28} className={`${colors?.text} lg:w-9 lg:h-9`} />
                   </div>
+                  
                   {/* Content */}
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    {feature?.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-8 leading-relaxed">
-                    {feature?.description}
-                  </p>
-                  {/* Stats */}
-                  <div className="space-y-4">
-                    {feature?.stats?.map((stat, statIndex) => (
-                      <div key={statIndex} className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">
-                          {stat?.label}
-                        </span>
-                        <span className={`font-bold ${colors?.text}`}>
-                          {stat?.value}
-                        </span>
-                      </div>
-                    ))}
+                  <div className="space-y-4 lg:space-y-6">
+                    <h3 className="text-xl lg:text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                      {feature?.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm lg:text-base">
+                      {feature?.description}
+                    </p>
+                    
+                    {/* Stats */}
+                    <div className="space-y-3 pt-4 border-t border-border">
+                      {feature?.stats?.map((stat, statIndex) => (
+                        <div key={statIndex} className="flex items-center justify-between">
+                          <span className="text-xs lg:text-sm font-medium text-muted-foreground">
+                            {stat?.label}
+                          </span>
+                          <span className={`text-base lg:text-lg font-bold ${colors?.text}`}>
+                            {stat?.value}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  {/* Decorative Element */}
-                  <div className={`absolute top-4 right-4 w-8 h-8 ${colors?.bg} rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-300`}>
-                    <div className={`w-full h-full border-2 ${colors?.border} rounded-full molecular-animation`}></div>
+                  
+                  {/* Floating Badge */}
+                  <div className={`absolute -top-2 -right-2 lg:-top-3 lg:-right-3 w-10 h-10 lg:w-12 lg:h-12 ${colors?.bg} rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon name="CheckCircle" size={16} className={`${colors?.text} lg:w-5 lg:h-5`} />
                   </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Bottom CTA */}
-          <div className="text-center mt-16">
-            <div className="inline-flex items-center space-x-2 text-muted-foreground">
-              <Icon name="ArrowRight" size={16} />
-              <span className="text-sm">Discover our comprehensive capabilities</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
