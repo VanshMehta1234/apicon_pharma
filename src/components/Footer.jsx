@@ -2,11 +2,11 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-[#06243A] via-[#08314F] to-[#0B406A]">
+    <footer className="bg-gradient-to-br from-[#06243A] via-[#08314F] to-[#0B406A] reveal">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 reveal" style={{ transitionDelay: '100ms' }}>
             <div className="flex items-center space-x-3 mb-4">
               <img src="/assets/images/page1.bmp" alt="Apicon Pharma Logo" className="w-10 h-10 rounded-md object-cover shadow-sm" />
               <div>
@@ -25,7 +25,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="reveal" style={{ transitionDelay: '160ms' }}>
             <h4 className="font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm text-white/80">
               <li><button onClick={() => document?.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-primary transition-colors">Products</button></li>
@@ -36,7 +36,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="reveal" style={{ transitionDelay: '220ms' }}>
             <h4 className="font-semibold text-white mb-4">Contact</h4>
             <ul className="space-y-2 text-sm text-white">
               <li>partnership@apiconpharma.com</li>
@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-white/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center reveal" style={{ transitionDelay: '280ms' }}>
           <p className="text-sm text-white/80">
             © {new Date()?.getFullYear()} Apicon Pharma. All rights reserved.
           </p>

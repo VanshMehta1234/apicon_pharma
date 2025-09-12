@@ -33,11 +33,11 @@ const AboutUsSection = () => {
   }, [carouselImages.length]);
 
   return (
-    <section id="about" aria-labelledby="about-heading" className="py-24 bg-background">
+    <section id="about" aria-labelledby="about-heading" className="py-24 bg-background reveal">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           {/* Left: Dynamic Visual so it never feels empty */}
-          <div className="lg:col-span-6 order-first">
+          <div className="lg:col-span-6 order-first reveal" style={{ transitionDelay: '120ms' }}>
             <div className="relative group rounded-3xl overflow-hidden shadow-xl">
               <img
                 src={carouselImages[currentImageIndex].src}
@@ -64,7 +64,7 @@ const AboutUsSection = () => {
           </div>
 
           {/* Right: Trimmed copy and key points only */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-6 reveal" style={{ transitionDelay: '200ms' }}>
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-border bg-muted/40">
               <Icon name="Building2" size={18} className="text-primary mr-2" />
               <span className="text-sm font-semibold text-primary">About Apicon Pharma</span>
