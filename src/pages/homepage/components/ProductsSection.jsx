@@ -185,17 +185,10 @@ const ProductsSection = () => {
                   className="absolute inset-0 m-auto max-h-full max-w-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 />
                 
-                {/* Badges */}
-                <div className="absolute top-3 right-3 px-3 py-1 bg-primary text-white rounded-full text-sm font-semibold">
-                  {product.purity}% Pure
-                </div>
 
-                <div className={`absolute top-3 left-3 px-2 py-1 rounded-full text-xs font-medium ${
-                  product.availability === 'In Stock' 
-                    ? 'bg-green-100 text-green-800' 
-                    : 'bg-yellow-100 text-yellow-800'
-                }`}>
-                  {product.availability}
+                {/* Under Development Badge */}
+                <div className="absolute top-3 left-3 px-3 py-1 bg-blue-600 text-white rounded-full text-sm font-semibold">
+                  Under Development
                 </div>
 
                 {/* Price */}
