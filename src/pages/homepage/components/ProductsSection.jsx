@@ -167,52 +167,63 @@ const ProductsSection = () => {
           {filteredProducts.map((product, index) => (
             <div
               key={product.id}
-              className={`group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-500 hover:-translate-y-1 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+              className={`group bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              {/* Product Image */}
-              <div className="relative bg-white h-64 md:h-72 overflow-hidden flex items-center justify-center">
-                {/* Default: per-product placeholder (fully contained) */}
-                <img
-                  src={product.placeholderImage || '/assets/images/p2.png'}
-                  alt={`${product.name} laboratory`}
-                  className="max-h-full max-w-full object-contain transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-                />
-                {/* Hover: specific product image (fully contained) */}
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="absolute inset-0 m-auto max-h-full max-w-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                />
+              {/* Product Name and Image Section */}
+              <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 h-64 md:h-72 overflow-hidden">
                 
-
+                {/* Product Name - Default State */}
+                <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300 z-10">
+                  <span
+                    className="text-6xl font-black bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent drop-shadow-lg text-center"
+                    style={{
+                      fontFamily: 'Poppins, Inter, Segoe UI, Arial, sans-serif',
+                      letterSpacing: '0.04em',
+                    }}
+                  >
+                    {product.name}
+                  </span>
+                </div>
+                
+                {/* Product Image - Hover State - BIGGER SIZE */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 bg-white/95">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="max-h-full max-w-full object-contain p-3"
+                  />
+                </div>
+                
                 {/* Under Development Badge */}
-                <div className="absolute top-3 left-3 px-3 py-1 bg-blue-600 text-white rounded-full text-sm font-semibold">
+                <div className="absolute top-3 left-3 px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold shadow-lg z-30">
                   Under Development
                 </div>
-
-                {/* Price */}
-                <div className="absolute bottom-3 right-3 text-white text-right">
-                  <div className="text-sm opacity-90">{product.therapeutic || product.unit}</div>
+                
+                {/* Therapeutic info in bottom right */}
+                <div className="absolute bottom-3 right-3 z-30">
+                  <div className="text-sm font-medium bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-gray-700 shadow-sm">
+                    {product.therapeutic || product.unit}
+                  </div>
                 </div>
               </div>
 
               {/* Product Details */}
               <div className="p-6">
                 <div className="mb-4">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
                     {product.name}
                   </h3>
                   
-                  <div className="flex items-center gap-4 text-gray-600 mb-3 text-sm">
-                    <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-4 text-gray-600 mb-4 text-sm">
+                    <div className="flex items-center gap-1 bg-gray-50 px-3 py-1 rounded-lg">
                       <Icon name="Hash" size={14} className="text-primary" />
                       <span className="font-mono">CAS: {product.casNumber}</span>
                     </div>
                     {product.therapeutic && (
-                      <div className="flex items-center gap-1">
-                        <Icon name="Beaker" size={14} className="text-primary" />
-                        <span>{product.therapeutic}</span>
+                      <div className="flex items-center gap-1 bg-blue-50 px-3 py-1 rounded-lg">
+                        <Icon name="Beaker" size={14} className="text-blue-600" />
+                        <span className="text-blue-700 font-medium">{product.therapeutic}</span>
                       </div>
                     )}
                   </div>
@@ -221,14 +232,12 @@ const ProductsSection = () => {
                     {product.description}
                   </p>
                 </div>
-
-                {/* Removed non-functional action buttons */}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Removed non-functional CTA buttons; keeping informational copy */}
+        {/* Info Section */}
         <div className="text-center">
           <p className="text-gray-600 mt-4 text-sm">
             Can't find what you're looking for? Our team can synthesize custom APIs to your exact specifications.
