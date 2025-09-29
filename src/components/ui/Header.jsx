@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import Icon from '../AppIcon';
 import Button from './Button';
 
@@ -32,11 +33,13 @@ const Header = () => {
   }, []);
 
   const navigationItems = [
-    { name: 'Home', section: 'home', icon: 'Home' },
-    { name: 'Products', section: 'products', icon: 'Package' },
-    { name: 'About Us', section: 'about', icon: 'Building2' },
-    { name: 'Contact', section: 'contact', icon: 'Mail' },
+    { name: 'Home', path: '/', icon: 'Home' },
+    { name: 'Products', path: '/products', icon: 'Package' },
+    { name: 'About Us', path: '/about', icon: 'Building2' },
+    { name: 'Contact', path: '/contact', icon: 'Mail' },
   ];
+
+  const location = useLocation();
 
   const scrollToSection = (sectionId) => {
     const element = document?.getElementById(sectionId);
@@ -72,40 +75,37 @@ const Header = () => {
               onClick={() => scrollToSection('home')}
               className="flex items-center space-x-2 sm:space-x-3 group"
             >
-              <div className="relative">
+              <div className="relative flex items-center h-12 sm:h-14">
                 <img
                   src="/assets/images/page1.bmp"
                   alt="Apicon Pharma Logo"
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-md object-cover shadow-sm"
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-md object-cover shadow-sm transition-all duration-300"
                   loading="eager"
                 />
               </div>
-              <div className="block">
-                <h1 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-scientific">
-                  Apicon Pharma
-                </h1>
-                <p className="text-xs text-muted-foreground -mt-1 hidden xs:block">
-                  Precision Molecules for Life
-                </p>
-              </div>
+                <div className="flex flex-col justify-center h-full">
+                  <h1 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-scientific text-center">
+                    Apicon Pharma
+                  </h1>
+                </div>
             </button>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-2">
             {navigationItems?.map((item) => (
-              <button
-                key={item?.section}
-                onClick={() => scrollToSection(item?.section)}
+              <Link
+                key={item?.path}
+                to={item?.path}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-all duration-scientific ${
-                  activeSection === item?.section
+                  location.pathname === item?.path
                     ? 'bg-primary text-primary-foreground shadow-sm'
                     : 'text-foreground hover:text-primary hover:bg-accent'
                 }`}
               >
                 <Icon name={item?.icon} size={16} />
                 <span>{item?.name}</span>
-              </button>
+              </Link>
             ))}
           </nav>
 
@@ -131,21 +131,21 @@ const Header = () => {
               {/* Navigation Items */}
               <div className="space-y-2">
                 {navigationItems?.map((item) => (
-                  <button
-                    key={item?.section}
-                    onClick={() => scrollToSection(item?.section)}
+                  <Link
+                    key={item?.path}
+                    to={item?.path}
+                    onClick={closeMobileMenu}
                     className={`flex items-center space-x-3 px-3 py-3 rounded-lg text-sm font-medium transition-all duration-scientific w-full ${
-                      activeSection === item?.section
+                      location.pathname === item?.path
                         ? 'bg-primary text-primary-foreground'
                         : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                     }`}
                   >
                     <Icon name={item?.icon} size={18} />
                     <span>{item?.name}</span>
-                  </button>
+                  </Link>
                 ))}
               </div>
-              
             </div>
           </div>
         )}
