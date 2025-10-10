@@ -61,11 +61,7 @@ const Header = () => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-scientific ${
-        isScrolled 
-          ? 'bg-background/95 backdrop-blur-md shadow-md border-b border-border' 
-          : 'bg-background/80 backdrop-blur-sm'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-scientific bg-background shadow-md border-b border-border`}
     >
       <div className="w-full">
         <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -75,22 +71,21 @@ const Header = () => {
               onClick={() => scrollToSection('home')}
               className="flex items-center space-x-2 sm:space-x-3 group"
             >
-              <div className="relative flex items-center h-12 sm:h-14">
+              <div className="relative flex items-center h-12 sm:h-14 transition-transform duration-300 group-hover:scale-[1.03]">
                 <img
-                  src="/assets/images/page1.bmp"
+                  src="/assets/images/logo.png"
                   alt="Apicon Pharma Logo"
-                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-md object-cover shadow-sm transition-all duration-300"
+                  className="h-10 sm:h-12 w-auto object-contain transition-all duration-300"
                   loading="eager"
                 />
               </div>
                 <div className="flex flex-col justify-center h-full">
-                  <h1 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-scientific text-center">
+                  <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-foreground group-hover:text-primary transition-colors duration-scientific text-center">
                     Apicon Pharma
                   </h1>
                 </div>
             </button>
           </div>
-
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-2">
             {navigationItems?.map((item) => (
