@@ -36,7 +36,7 @@ const Header = () => {
     { name: 'Home', path: '/', icon: 'Home' },
     { name: 'Products', path: '/products', icon: 'Package' },
     { name: 'About Us', path: '/about', icon: 'Building2' },
-    { name: 'Contact Us', path: '/contact', icon: 'Contact' },
+    { name: 'Contact', path: '/contact', icon: 'Mail' },
   ];
 
   const location = useLocation();
@@ -163,18 +163,6 @@ const Header = () => {
                     <span>{item?.name}</span>
                   </Link>
                 ))}
-                <Link
-                  to="/contact"
-                  onClick={closeMobileMenu}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 w-full shadow-sm ${
-                    location.pathname === '/contact'
-                      ? 'bg-primary text-primary-foreground'
-                      : 'bg-primary/90 text-primary-foreground hover:bg-primary'
-                  }`}
-                >
-                  <Icon name="Mail" size={18} />
-                  <span>Contact</span>
-                </Link>
               </div>
 
               {/* Contact Info in Mobile */}

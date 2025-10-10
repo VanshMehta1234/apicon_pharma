@@ -106,11 +106,15 @@
   }
   
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-feature-settings: 'cv11', 'ss01';
     font-variation-settings: 'opsz' 32;
     line-height: 1.6;
+    background: linear-gradient(135deg, #475569 0%, #334155 25%, #1e293b 50%, #0f172a 75%, #020617 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+    min-height: 100vh;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -210,6 +214,94 @@
       linear-gradient(rgba(0, 121, 192, 0.1) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0, 121, 192, 0.1) 1px, transparent 1px);
     background-size: 20px 20px;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .floating-molecules {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .molecule {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 121, 192, 0.4);
+    border-radius: 50%;
+    animation: float 20s infinite linear;
+    box-shadow: 0 0 10px rgba(0, 121, 192, 0.3);
+  }
+
+  .molecule:nth-child(2n) {
+    background: rgba(108, 108, 110, 0.3);
+    animation-duration: 25s;
+    box-shadow: 0 0 8px rgba(108, 108, 110, 0.2);
+  }
+
+  .molecule:nth-child(3n) {
+    background: rgba(0, 121, 192, 0.25);
+    animation-duration: 30s;
+    box-shadow: 0 0 12px rgba(0, 121, 192, 0.2);
+  }
+
+  .molecule:nth-child(4n) {
+    background: rgba(255, 255, 255, 0.2);
+    animation-duration: 18s;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) translateX(0px) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) translateX(100px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .bg-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(0, 121, 192, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(108, 108, 110, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(0, 121, 192, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+    background-size: 300px 300px, 400px 400px, 200px 200px, 500px 500px;
+    background-position: 0 0, 100px 100px, 50px 50px, 200px 200px;
+    animation: patternMove 20s ease-in-out infinite;
+  }
+
+  @keyframes patternMove {
+    0%, 100% {
+      background-position: 0 0, 100px 100px, 50px 50px, 200px 200px;
+    }
+    50% {
+      background-position: 100px 100px, 0 0, 150px 150px, 300px 300px;
+    }
   }
 }
 
