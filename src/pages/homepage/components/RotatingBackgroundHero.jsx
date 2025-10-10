@@ -5,9 +5,9 @@ const RotatingBackgroundHero = () => {
 
   // Your 3 background images
   const backgroundImages = [
-    '/assets/images/lab-image-laptop.jpg',
-    '/assets/images/lab-image2.jpeg', 
-    '/assets/images/lab-image3.avif'
+    '/assets/images/Hero-image1.png',
+    '/assets/images/Hero-image2.png',
+    '/assets/images/Hero-image3.png'
   ];
 
   // Auto-rotate images every 5 seconds

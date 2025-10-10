@@ -154,10 +154,6 @@ const ProductsSection = () => {
               <span>
                 Showing <span className="font-semibold text-primary">{filteredProducts.length}</span> of {products.length} products
               </span>
-              <div className="flex items-center gap-2">
-                <Icon name="Shield" size={14} className="text-green-600" />
-                <span>All products are cGMP certified</span>
-              </div>
             </div>
           </div>
         </div>
