@@ -5,8 +5,8 @@ const RotatingBackgroundHero = () => {
 
   // Your 3 background images
   const backgroundImages = [
-    '/assets/images/lab-image.avif',
-    '/assets/images/lab-image2.avif', 
+    '/assets/images/lab-image-laptop.jpg',
+    '/assets/images/lab-image2.jpeg', 
     '/assets/images/lab-image3.avif'
   ];
 
@@ -37,31 +37,34 @@ const RotatingBackgroundHero = () => {
   };
 
   return (
-    <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden">
+    <div className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
       {/* Rotating Background Images */}
       {backgroundImages.map((image, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
             index === currentImageIndex ? 'opacity-100' : 'opacity-0'
           }`}
           style={{
             backgroundImage: `url(${image})`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat'
           }}
         />
       ))}
 
+      {/* Overlay gradient for better text readability if needed */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20 pointer-events-none" />
+
       {/* Left Arrow Button */}
       <button
         onClick={handlePrevious}
-        className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-black/20 hover:bg-black/40 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 z-10 backdrop-blur-sm"
+        className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transition-all duration-300 z-10 backdrop-blur-sm"
         aria-label="Previous image"
       >
         <svg 
-          className="w-6 h-6" 
+          className="w-5 h-5 md:w-6 md:h-6" 
           fill="none" 
           stroke="currentColor" 
           viewBox="0 0 24 24"
@@ -69,7 +72,7 @@ const RotatingBackgroundHero = () => {
           <path 
             strokeLinecap="round" 
             strokeLinejoin="round" 
-            strokeWidth={2} 
+            strokeWidth={2.5} 
             d="M15 19l-7-7 7-7" 
           />
         </svg>
@@ -78,11 +81,11 @@ const RotatingBackgroundHero = () => {
       {/* Right Arrow Button */}
       <button
         onClick={handleNext}
-        className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-black/20 hover:bg-black/40 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 z-10 backdrop-blur-sm"
+        className="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transition-all duration-300 z-10 backdrop-blur-sm"
         aria-label="Next image"
       >
         <svg 
-          className="w-6 h-6" 
+          className="w-5 h-5 md:w-6 md:h-6" 
           fill="none" 
           stroke="currentColor" 
           viewBox="0 0 24 24"
@@ -90,22 +93,22 @@ const RotatingBackgroundHero = () => {
           <path 
             strokeLinecap="round" 
             strokeLinejoin="round" 
-            strokeWidth={2} 
+            strokeWidth={2.5} 
             d="M9 5l7 7-7 7" 
           />
         </svg>
       </button>
 
       {/* Dot Indicators */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
         {backgroundImages.map((_, index) => (
           <button
             key={index}
             onClick={() => handleDotClick(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
               index === currentImageIndex 
-                ? 'bg-white scale-110' 
-                : 'bg-white/50 hover:bg-white/75'
+                ? 'bg-white scale-125 shadow-lg' 
+                : 'bg-white/60 hover:bg-white/80'
             }`}
             aria-label={`Go to image ${index + 1}`}
           />
